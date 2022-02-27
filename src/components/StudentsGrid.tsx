@@ -1,28 +1,30 @@
 import React from 'react';
-import { useFetchGifs } from '../hooks/useFetchStudents';
+import { useFetchStudents } from '../hooks/useFetchStudents';
 
 const StudentsGrid = () => {
-	const { data: students } = useFetchGifs();
+	const { data: students } = useFetchStudents();
 	const average = (grades: string[]) => {
 		return grades.reduce((acc, grade) => acc + parseInt(grade), 0) / grades.length;
 	};
 
 	return (
 		<>
-			<div>
-				{students.map(student => {
-					return (
-						<div key={student.id}>
+			{students.map((student, index) => {
+				return (
+					<div key={index} className={`card ${index === students.length - 1 ? 'last-card' : ''}`}>
+						<div className="card-img">
 							<img src={student.pic} alt={`${student.firstName}'s pic`} />
-							<h1>{student.firstName}</h1>
+						</div>
+						<div className="card-body">
+							<h1>{`${student.firstName.toUpperCase()} ${student.lastName.toUpperCase()}`}</h1>
 							<p>Email: {student.email}</p>
 							<p>Company: {student.company}</p>
 							<p>Skill: {student.skill}</p>
-							<p>Average: {average(student.grades)}</p>
+							<p>Average: {average(student.grades)}%</p>
 						</div>
-					);
-				})}
-			</div>
+					</div>
+				);
+			})}
 		</>
 	);
 };

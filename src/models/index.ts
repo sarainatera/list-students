@@ -9,3 +9,7 @@ export interface Student {
 	pic: string;
 	skill: string;
 }
+
+export interface StateProperties {
+	data: Array<Student>;
+}

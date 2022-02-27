@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getStudents } from '../helpers/getStudents';
-import { Student } from '../models';
+import { StateProperties } from '../models';
 
-export const useFetchGifs = () => {
-	interface StateProperties {
-		data: Array<Student>;
-	}
-
+export const useFetchStudents = () => {
 	const [state, setState] = useState<StateProperties>({
 		data: [],
 	});
