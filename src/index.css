@@ -24,6 +24,15 @@ p {
 	font-size: 1rem;
 }
 
+input {
+	width: 100%;
+	border: none;
+	outline: none;
+	font-size: 1.25rem;
+	margin: 0.5rem 0;
+	box-sizing: border-box;
+}
+
 img {
 	height: 7.75rem;
 	border-radius: 50%;
@@ -37,6 +46,7 @@ img {
 .card-grid {
 	background-color: white;
 	max-height: 80vh;
+	min-height: 80vh;
 	width: 60vw;
 	overflow-y: auto;
 	margin: auto;
@@ -56,6 +66,11 @@ img {
 
 .card-body {
 	margin-left: 0.5rem;
+}
+
+.search-student {
+	margin: 0.5rem;
+	border-bottom: 1.5px solid black;
 }
 
 .card-grid::-webkit-scrollbar {

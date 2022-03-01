@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import { useFetchStudents } from '../hooks/useFetchStudents';
+import { SearchContext } from '../search/SearchContext';
+import { getStudentsByName } from '../helpers/getStudentsByName';
 
 const StudentsGrid = () => {
 	const { data: students } = useFetchStudents();
+	const { searchNameValue } = useContext(SearchContext);
 	const average = (grades: string[]) => {
 		return grades.reduce((acc, grade) => acc + parseInt(grade), 0) / grades.length;
 	};
 
+	const filteredStudents = useMemo(
+		() => getStudentsByName(searchNameValue, students),
+		[searchNameValue, students],
+	);
+
 	return (
 		<>
-			{students.map((student, index) => {
+			{filteredStudents.map((student, index) => {
 				return (
 					<div key={index} className={`card ${index === students.length - 1 ? 'last-card' : ''}`}>
 						<div className="card-img">
