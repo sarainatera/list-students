@@ -1,19 +1,16 @@
-import React, { memo, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormInputs } from '../models';
 import { SearchContext } from '../search/SearchContext';
 
-const SearchByName = memo(() => {
+const SearchByName = () => {
 	const { setSearchNameValue } = useContext(SearchContext);
 	const { register, watch } = useForm<FormInputs>();
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 	};
 
-	useEffect(() => {
-		setSearchNameValue(watch('searchNameInput'));
-	}, [setSearchNameValue, watch]);
-	setSearchNameValue(watch('searchNameInput'));
+	setSearchNameValue(state => (state = watch('searchNameInput')));
 
 	return (
 		<form className="search-student" onSubmit={event => onSubmit(event)}>
@@ -25,6 +22,6 @@ const SearchByName = memo(() => {
 			/>
 		</form>
 	);
-});
+};
 
 export default SearchByName;

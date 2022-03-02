@@ -1,7 +1,9 @@
 import { createContext } from 'react';
-import { SearchContextProps } from '../models';
+import { UpdateType } from '../models';
+
+const defaultUpdate: UpdateType = () => '';
 
 export const SearchContext = createContext({
 	searchNameValue: '',
-	setSearchNameValue: () => {},
-} as SearchContextProps);
+	setSearchNameValue: defaultUpdate,
+});

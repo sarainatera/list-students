@@ -22,7 +22,4 @@ export type FormInputs = {
 	searchNameInput: string;
 };
 
-export interface SearchContextProps {
-	searchNameValue: string;
-	setSearchNameValue: React.Dispatch<React.SetStateAction<string>>;
-}
+export type UpdateType = React.Dispatch<React.SetStateAction<string>>;

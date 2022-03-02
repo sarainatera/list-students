@@ -33,6 +33,12 @@ input {
 	box-sizing: border-box;
 }
 
+.toggle-button {
+	position: absolute;
+	top: 1.35rem;
+	right: 1rem;
+}
+
 img {
 	height: 7.75rem;
 	border-radius: 50%;
@@ -56,6 +62,7 @@ img {
 
 .card {
 	display: flex;
+	position: relative;
 	border-bottom: 1.5px solid rgb(235, 234, 234);
 	padding: 0.85rem;
 }
