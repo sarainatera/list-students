@@ -1,17 +1,11 @@
-import React, { useContext, useMemo } from 'react';
+import React from 'react';
 import { useFetchStudents } from '../hooks/useFetchStudents';
-import { SearchContext } from '../search/SearchContext';
 import { getStudentsByName } from '../helpers/getStudentsByName';
 import StudentCard from './StudentCard';
 
-const StudentsGrid = () => {
+const StudentsGrid = ({ searchNameValue }: { searchNameValue: string }) => {
 	const { data: students } = useFetchStudents();
-	const { searchNameValue } = useContext(SearchContext);
-
-	const filteredStudents = useMemo(
-		() => getStudentsByName(searchNameValue, students),
-		[searchNameValue, students],
-	);
+	const filteredStudents = getStudentsByName(searchNameValue, students);
 
 	return (
 		<>

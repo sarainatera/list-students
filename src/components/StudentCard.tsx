@@ -3,17 +3,19 @@ import { Student } from '../models/index';
 
 const StudentCard = (student: Student, studentLength: number, index: number) => {
 	const [isShow, setIsShow] = useState(false);
-	const average = (grades: string[]) => {
-		return grades.reduce((acc, grade) => acc + parseInt(grade), 0) / grades.length;
-	};
+
 	const showGrades = (student: Student) => {
 		return student.grades.map((grade, index) => {
 			return (
-				<div className={`${index === 0 && 'grades'}`}>
+				<div key={index} className={`${index === 0 && 'grades'}`}>
 					<p key={index}>{`Test ${index + 1}: ${grade}%`}</p>
 				</div>
 			);
 		});
+	};
+
+	const average = (grades: string[]) => {
+		return grades.reduce((acc, grade) => acc + parseInt(grade), 0) / grades.length;
 	};
 
 	return (

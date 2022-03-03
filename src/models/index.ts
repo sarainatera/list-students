@@ -14,12 +14,6 @@ export interface StateProperties {
 	data: Array<Student>;
 }
 
-export interface InitialFormState {
-	searchNameInput: string;
-}
-
 export type FormInputs = {
 	searchNameInput: string;
 };
-
-export type UpdateType = React.Dispatch<React.SetStateAction<string>>;

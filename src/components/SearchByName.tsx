@@ -1,16 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FormInputs } from '../models';
-import { SearchContext } from '../search/SearchContext';
 
-const SearchByName = () => {
-	const { setSearchNameValue } = useContext(SearchContext);
+const SearchByName = ({
+	setSearchNameValue,
+}: {
+	setSearchNameValue: React.Dispatch<React.SetStateAction<string>>;
+}) => {
 	const { register, watch } = useForm<FormInputs>();
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 	};
-
-	setSearchNameValue(state => (state = watch('searchNameInput')));
+	setSearchNameValue((state: string) => (state = watch('searchNameInput')));
 
 	return (
 		<form className="search-student" onSubmit={event => onSubmit(event)}>
