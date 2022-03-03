@@ -33,20 +33,55 @@ input {
 	box-sizing: border-box;
 }
 
-.toggle-button {
-	position: absolute;
-	top: 1.35rem;
-	right: 1rem;
-}
-
 img {
 	height: 7.75rem;
 	border-radius: 50%;
 	border: 1px solid #c9c7c7;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
 	margin: 0 1.5rem 0.5rem 0.6rem;
+}
+
+.toggle-button {
+	position: absolute;
+	top: 0.5rem;
+	right: 1rem;
+	background: none;
+	width: 50px;
+	height: 50px;
+	border: 0;
+	font-size: 1.5em;
+}
+
+.toggle-button span {
+	position: absolute;
+	transition: 300ms;
+	background: #9d9b9f;
+	border-radius: 2px;
+}
+
+.toggle-button-plus {
+	top: 25%;
+	bottom: 25%;
+	width: 10%;
+	left: 45%;
+}
+
+.toggle-button-minus {
+	left: 25%;
+	right: 25%;
+	height: 10%;
+	top: 45%;
+}
+
+.active {
+	transform: rotate(90deg);
+}
+
+.grades {
+	margin-top: 1rem;
+}
+
+.toggle-button:hover span {
+	background-color: black;
 }
 
 .card-grid {

@@ -1,24 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Student } from '../models/index';
 
 const StudentCard = (student: Student, studentLength: number, index: number) => {
+	const [isShow, setIsShow] = useState(false);
 	const average = (grades: string[]) => {
 		return grades.reduce((acc, grade) => acc + parseInt(grade), 0) / grades.length;
 	};
-	let isShow = false;
-	// const showGrades = (student: Student) => {
-	// 	return student.grades.map((grade, index) => {
-	// 		return (
-	// 			<p key={index}>
-	// 				Test {index + 1}: {grade}%
-	// 			</p>
-	// 		);
-	// 	});
-	// };
-
-	const showToggle = () => {
-		isShow = !isShow;
-		console.log(isShow);
+	const showGrades = (student: Student) => {
+		return student.grades.map((grade, index) => {
+			return (
+				<div className={`${index === 0 && 'grades'}`}>
+					<p key={index}>{`Test ${index + 1}: ${grade}%`}</p>
+				</div>
+			);
+		});
 	};
 
 	return (
@@ -32,12 +27,11 @@ const StudentCard = (student: Student, studentLength: number, index: number) => 
 				<p>Company: {student.company}</p>
 				<p>Skill: {student.skill}</p>
 				<p>Average: {average(student.grades)}%</p>
-
-				{/* {isShow ? <div>Hola</div> : <div>Chao</div>} */}
-				{(() => (isShow ? <div>Hola</div> : <div>Chao</div>))()}
+				{isShow && showGrades(student)}
 			</div>
-			<button className="toggle-button" onClick={showToggle}>
-				+
+			<button className="toggle-button" onClick={() => setIsShow(!isShow)}>
+				<span className={`toggle-button-plus ${isShow && 'active'}`}></span>
+				<span className="toggle-button-minus"></span>
 			</button>
 		</div>
 	);
