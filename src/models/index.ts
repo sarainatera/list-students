@@ -8,12 +8,5 @@ export interface Student {
 	lastName: string;
 	pic: string;
 	skill: string;
+	tags?: Array<string>;
 }
-
-export interface StateProperties {
-	data: Array<Student>;
-}
-
-export type FormInputs = {
-	searchNameInput: string;
-};

@@ -25,11 +25,8 @@ p {
 }
 
 input {
-	width: 100%;
 	border: none;
 	outline: none;
-	font-size: 1.25rem;
-	margin: 0.5rem 0;
 	box-sizing: border-box;
 }
 
@@ -112,7 +109,32 @@ img {
 
 .search-student {
 	margin: 0.5rem;
-	border-bottom: 1.5px solid black;
+	border-bottom: 1.5px solid rgb(180, 178, 178);
+}
+
+.search-input {
+	width: 100%;
+	font-size: 1.25rem;
+	margin: 0.5rem 0;
+}
+
+.tag {
+	background-color: #e0e0e0;
+	border-radius: 3px;
+	padding: 0.5rem;
+	margin-right: 0.3rem;
+	display: inline-block;
+}
+
+.tags-container {
+	margin-left: 1rem;
+}
+
+.tag-input {
+	margin: 0.3rem 1.25rem;
+	font-size: 1rem;
+	border-bottom: 1.5px solid rgb(180, 178, 178);
+	padding-bottom: 0.4rem;
 }
 
 .card-grid::-webkit-scrollbar {

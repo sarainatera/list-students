@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
+import { average } from '../helpers/average';
 import { Student } from '../models/index';
+import TagInput from './TagInput';
 
-const StudentCard = (student: Student, studentLength: number, index: number) => {
+const StudentCard = ({
+	student,
+	studentsLength,
+	index,
+	setStudents,
+}: {
+	student: Student;
+	studentsLength: number;
+	index: number;
+	setStudents: React.Dispatch<React.SetStateAction<Student[]>>;
+}) => {
 	const [isShow, setIsShow] = useState(false);
 
-	const showGrades = (student: Student) => {
+	const Grades = (student: Student) => {
 		return student.grades.map((grade, index) => {
 			return (
-				<div key={index} className={`${index === 0 && 'grades'}`}>
-					<p key={index}>{`Test ${index + 1}: ${grade}%`}</p>
-				</div>
+				<p key={index} className={`${index === 0 && 'grades'}`}>{`Test ${index + 1}: ${grade}%`}</p>
 			);
 		});
 	};
 
-	const average = (grades: string[]) => {
-		return grades.reduce((acc, grade) => acc + parseInt(grade), 0) / grades.length;
-	};
-
 	return (
-		<div className={`card ${index === studentLength - 1 ? 'last-card' : ''}`}>
+		<div className={`card ${index === studentsLength - 1 ? 'last-card' : ''}`}>
 			<div className="card-img">
 				<img src={student.pic} alt={`${student.firstName}'s pic`} />
 			</div>
@@ -29,7 +35,17 @@ const StudentCard = (student: Student, studentLength: number, index: number) => 
 				<p>Company: {student.company}</p>
 				<p>Skill: {student.skill}</p>
 				<p>Average: {average(student.grades)}%</p>
-				{isShow && showGrades(student)}
+				{isShow && Grades(student)}
+				<div className="tags-container">
+					{student.tags?.map((tag, index) => {
+						return (
+							<span key={index} className="tag">
+								{tag}
+							</span>
+						);
+					})}
+				</div>
+				<TagInput student={student} setStudents={setStudents} />
 			</div>
 			<button className="toggle-button" onClick={() => setIsShow(!isShow)}>
 				<span className={`toggle-button-plus ${isShow && 'active'}`}></span>
