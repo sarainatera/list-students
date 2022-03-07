@@ -1,6 +1,6 @@
-# To install project
+# To install dependencies
 
-`npm i`
+`npm install`
 
 # To run server
 
